@@ -13,7 +13,7 @@ export const Card = (props: CardProps):ReactElement => {
     const tags = props.tags;
     
     return(
-        <div id="Card" className="flex flex-col w-86a bg-white rounded-lg p-4 gap-y-4">
+        <div id="Card" className="flex flex-col w-86a bg-white rounded-lg p-4 gap-y-4 border border-gray-200">
             <div >
                 <div id="TopBar" className="flex items-center gap-4 justify-between">
                     <div className="flex items-center gap-2">
