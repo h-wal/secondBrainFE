@@ -23,7 +23,7 @@ let sizeName = {
 export const Button = (props : ButttonProps): ReactElement => {
     const Image = props.startIcon
     return(
-        <button className={`font-sans text-[13px] ${variantName[props.variant]} ${sizeName[props.size]}`}>
+        <button onClick={props.onClick} className={`hover:scale-110 transition-all duration-300 font-sans text-[13px] cursor-pointer ${variantName[props.variant]} ${sizeName[props.size]}`}>
             <div className="flex gap-2 justify-center items-center ">
                 <div>{Image}</div>
                 <div>{props.text}</div>

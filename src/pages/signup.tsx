@@ -2,6 +2,7 @@ import { useState } from "react"
 import axios from "axios";
 import { Backend_URL } from "../config";
 import { useNavigate } from "react-router-dom";
+import { Redirect } from "../components/redirect";
 
 export const Signup = () => {
     const [username, setusername] = useState<string>("");
@@ -34,9 +35,7 @@ export const Signup = () => {
                     <input value={password} onChange={(e) => setPassword(e.target.value)} className="w-68 px-6 py-2 mx-4 my-2 border border-indigo-700 rounded-md" type="text" placeholder="Password"/>
                     <button onClick={submitHandler} className="bg-indigo-700 text-white text-font-large p-2 mx-4 my-2 rounded-lg cursor-pointer hover:bg-indigo-600">Sign Up</button>
                 </div>
-                <div className="text-xs text-gray-400 mt-4">
-                    Already Have an Account? Log In
-                </div>
+                <Redirect text="Already Have an Account?" redirect="/signin" redirectText="Log In"></Redirect>
             </div>
         </div>
     )

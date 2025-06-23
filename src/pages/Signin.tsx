@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Backend_URL } from "../config";
+import { Redirect } from "../components/redirect";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -31,8 +32,9 @@ export const SignIn = () => {
                 <div className="flex flex-col">
                     <input onChange={(e) => {setUsername(e.target.value)}} className="w-68 px-6 py-2 mx-4 my-2 border border-indigo-700 rounded-md" type="text" placeholder="Username" />
                     <input onChange={(e) => {setPassword(e.target.value)}} className="w-68 px-6 py-2 mx-4 my-2 border border-indigo-700 rounded-md" type="text" placeholder="Password"/>
-                    <button onClick={signinhandler} className="bg-indigo-700 text-white text-font-large p-2 mx-4 my-2 rounded-lg">Sign In</button>
+                    <button onClick={signinhandler} className="bg-indigo-700 text-white text-font-large p-2 mx-4 my-2 rounded-lg hover:bg-indigo-600 cursor-pointer">Sign In</button>
                 </div>
+                <Redirect text="New User?" redirect="/signup" redirectText="SignUpHere"></Redirect>
             </div>
         </div>
     )
