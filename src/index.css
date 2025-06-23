@@ -1,6 +1,1 @@
 @import "tailwindcss";
-
-@theme{
-  --color-indigo-200: [#ffffff]
-  --color-indigo-100: [#2596be]
-}

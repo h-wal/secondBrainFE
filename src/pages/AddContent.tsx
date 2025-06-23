@@ -1,9 +1,10 @@
-import type { ReactElement } from "react"
 import { DocsIcon } from "../icons/DocsIcon"
 import { VideoIcon } from "../icons/VideoIcon"
 import { TwitterIcon } from "../icons/twitterIcon"
 import { Cross } from "../icons/Cross"
 import { useState } from "react"
+import { Backend_URL } from "../config"
+import axios from "axios"
 
 export const AddContent = ({onClose}: {
     onClose: () => void;
@@ -13,12 +14,33 @@ export const AddContent = ({onClose}: {
     const [linkvalue, setlinkvalue] = useState<string>("");
     const [bodyvalue, setbodyvalue] = useState<string>("");
 
-    function AddContenttoDB(){
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+    const day = String(today.getDate()).padStart(2, '0');
+    const formattedDate = `${year}-${month}-${day}`;
+
+    async function AddContenttoDB(){
         const type = optionSelected;
         const body = bodyvalue;
         const title = titlevalue;
         const links = linkvalue;
-        console.log(`type = ${type}, body=${body}, title=${title}, links=${links}`)
+        const contentAdded = await axios.post(`${Backend_URL}/user/content`, {
+            type: type,
+            title: title,
+            content: body,
+            links: links,
+            tags: type,
+            date: formattedDate,
+        }, {
+            headers: {
+                "authorization": localStorage.getItem("token")
+            }
+        })
+        if(contentAdded){
+            alert("Content Addeed");
+            onClose();
+        }
     }
 
     return(

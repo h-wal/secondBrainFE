@@ -1,12 +1,36 @@
+import React, {useEffect ,useState} from "react"
 import { Card } from "../components/card"
-const userTags = ["productivity", "idea"]
+import { Backend_URL } from "../config"
+import axios from "axios"
+
 
 export const Contents = () => {
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        async function getUserData(){
+            const response = await axios.get(`${Backend_URL}/user/content`, {
+                headers: {
+                    "authorization": localStorage.getItem("token")
+                }
+            });
+            setData(response.data)
+        }
+        getUserData();
+    }, [])
+
     return(
        <div id="CardsBar" className='p-8 flex gap-4'> 
-          <Card type="yt" title="Project Ideas" tags = {userTags} dateAdded="10/03/2025"></Card>
-          <Card type="tweet" title="Card 2 Second Brain" tags = {userTags} dateAdded="10/03/2025"></Card>
-          <Card type="doc" title="Project Ideas" tags = {userTags} dateAdded="10/03/2025"></Card>
+            {data.map((item: any,index) => (
+                <Card
+                    key={index}
+                    type={item.type} 
+                    title={item.title} 
+                    content={item.content}
+                    tags = {item.tags} 
+                    dateAdded={item.date}>
+                </Card>
+            ))}
         </div>
     )
 }

@@ -1,5 +1,4 @@
 import type { ReactElement } from "react"
-import React from "react"
 import { CardShareIcon } from "../icons/CardShareIcon"
 import { CardDeleteIcon } from "../icons/CareDeleteIcon"
 import { DocsIcon } from "../icons/DocsIcon"
@@ -11,6 +10,7 @@ interface CardProps{
     title: string,
     tags: string[],
     dateAdded: string,
+    content: string
 }
 
 let cardIcon:any = {
@@ -21,7 +21,7 @@ let cardIcon:any = {
 
 export const Card = (props: CardProps):ReactElement => {
     const tags = props.tags;
-    const StartIcon = cardIcon[props.type]();
+    const StartIcon = cardIcon[props.type];
     return(
         <div id="Card" className="hover:scale-101 hover:transition-all hover:duration-100 flex flex-col w-86a bg-white rounded-lg p-4 gap-y-4 border border-gray-200">
             <div >
@@ -41,12 +41,7 @@ export const Card = (props: CardProps):ReactElement => {
                 </div>
             </div>
             <div id="content" className="p-2">
-                this is the conteajhsd
-                adjhfskjld
-                asdfjkhds
-                adfhkjasdf
-                sdf
-                {/* //Conditional Rendering dependent on BE */}
+                {props.content}
             </div>
             <div id="tagsBar flex">
                 {
@@ -66,3 +61,4 @@ export const Card = (props: CardProps):ReactElement => {
     )
 
 }
+

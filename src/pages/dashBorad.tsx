@@ -7,7 +7,7 @@ import { AddContent } from './AddContent'
 import { useState } from 'react'
 
 function Dashboard() {
-    const [addContentmodal, setaddContentmodal] = useState(true);
+    const [addContentmodal, setaddContentmodal] = useState(false);
 
   return (
     <div className='flex w-full realtive'>
@@ -15,7 +15,7 @@ function Dashboard() {
       <div className='flex-3/12 border-r border-gray-200'>   
         <SideBar />
       </div>
-      <div id="LeftPane" className='flex-9/12 bg-gray-100 h-screen'>
+      <div id="RightPane" className='flex-9/12 bg-gray-100 h-screen'>
         <div id="TopBar" className='px-8 pt-8 items-center flex justify-between'>
           <div className='text-2xl font-bold'>
             All Notes
