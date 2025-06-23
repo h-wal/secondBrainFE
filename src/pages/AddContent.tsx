@@ -58,6 +58,6 @@ export const AddContent = ({onClose}: {
                         </div>
                     </div>
                 </div>
-        </div>
+        </div> 
     )
 }
